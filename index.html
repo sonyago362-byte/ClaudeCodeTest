@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santi — Santiago Almazan Jr.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --bg2: #111111;
+      --bg3: #181818;
+      --gold: #c9a84c;
+      --gold-light: #e8c96a;
+      --white: #f0ede8;
+      --muted: #6b6b6b;
+      --border: #222222;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-name span {
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-sub strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      border: 2px solid var(--gold);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { width: 40px; opacity: 0.5; }
+      50% { width: 70px; opacity: 1; }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 3rem;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #a0a0a0;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .faith-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .traits {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .trait {
+      padding: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+    }
+
+    .trait h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    .trait p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── ACHIEVEMENTS ── */
+    #achievements { background: var(--bg); }
+
+    .achievements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .achievement {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .achievement:first-child { border-top: 1px solid var(--border); }
+
+    .achievement:hover .achievement-year { color: var(--gold); }
+
+    .achievement-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      transition: color 0.2s;
+      padding-top: 0.2rem;
+    }
+
+    .achievement-content h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .achievement-tag {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      padding: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .proof-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 2.5rem;
+      border-radius: 2px;
+      margin-top: 3rem;
+    }
+
+    .proof-block p {
+      font-size: 1.1rem;
+      color: #a0a0a0;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .proof-block p strong {
+      color: var(--white);
+      font-style: normal;
+    }
+
+    .proof-author {
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .proof-author-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .proof-author span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .proof-author small {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── CONNECT ── */
+    #connect {
+      text-align: center;
+    }
+
+    #connect .section-title { margin-bottom: 1rem; }
+
+    .connect-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    .connect-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .achievement { grid-template-columns: 60px 1fr; gap: 1rem; }
+      .achievement-year { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Santi</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Journey</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <p class="hero-eyebrow">Santiago Almazan Jr.</p>
+    <h1 class="hero-name">Think<br /><span>Different.</span><br />Move First.</h1>
+    <p class="hero-sub">
+      <strong>Self-made. Unconventional. Always early.</strong><br />
+      I don't follow trends — I spot them before they exist, and I move while everyone else is still watching.
+    </p>
+    <div class="hero-cta">
+      <a href="#achievements" class="btn btn-primary">My Journey</a>
+      <a href="#connect" class="btn btn-outline">Connect with Me</a>
+    </div>
+    <div class="scroll-hint">
+      <span class="scroll-line"></span>
+      Scroll
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade-in">Who I Am</p>
+    <h2 class="section-title fade-in">No degree.<br />No blueprint.</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="faith-badge">✝ Believer of Jesus Christ</div>
+        <p>
+          I'm <strong>Santiago Almazan Jr.</strong> — most people call me Santi. I dropped out of high school, and I'd do it again. Not because school is bad, but because I was already running ahead of the curriculum life had planned for me.
+        </p>
+        <p>
+          While my peers were chasing what everyone else was chasing, I was busy building things, studying markets nobody cared about yet, and connecting with people who were thinking years ahead of the crowd.
+        </p>
+        <p>
+          I'm not the guy with the resume full of company names and credentials. I'm the guy who figures it out — whatever <em>it</em> is — and gets it done before most people realize there was something to figure out.
+        </p>
+      </div>
+      <div class="traits fade-in">
+        <div class="trait">
+          <h4>Trend Spotter</h4>
+          <p>I see shifts in culture, tech, and markets before they go mainstream — and I act on them early.</p>
+        </div>
+        <div class="trait">
+          <h4>Adaptable by Default</h4>
+          <p>Give me a new domain, a new challenge, a new environment — I will figure it out and deliver.</p>
+        </div>
+        <div class="trait">
+          <h4>Operator & Leader</h4>
+          <p>I've built, recruited, trained, and spoken in front of large audiences. I know how to move people and get results.</p>
+        </div>
+        <div class="trait">
+          <h4>Self-Made Mindset</h4>
+          <p>No institutional safety net. Everything I've built came from identifying an opportunity and going all in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <p class="section-label fade-in">The Journey</p>
+    <h2 class="section-title fade-in">Early. Always.</h2>
+
+    <div class="achievements-list">
+
+      <div class="achievement fade-in">
+        <div class="achievement-year">2011</div>
+        <div class="achievement-content">
+          <h3>Placed 3rd — Cal State San Bernardino Academic Competition</h3>
+          <p>In 5th grade, I was selected to compete across multiple schools at a university-level competition — up against the top academic students in the region. I took 3rd place.</p>
+          <span class="achievement-tag">Early Excellence</span>
+        </div>
+      </div>
+
+      <div class="achievement fade-in">
+        <div class="achievement-year">2016</div>
+        <div class="achievement-content">
+          <h3>Built a YouTube Channel at 16 — Consistently</h3>
+          <p>At 16, while still in high school, I launched and consistently ran my own YouTube channel. No team, no resources — just discipline and vision. All while holding a 3.5 GPA.</p>
+          <span class="achievement-tag">Content Creation</span>
+        </div>
+      </div>
+
+      <div class="achievement fade-in">
+        <div class="achievement-year">2018</div>
+        <div class="achievement-content">
+          <h3>Founded & Ran a Sales Business at 18</h3>
+          <p>Built a small sales operation from the ground up. Personally recruited and trained a team. Closed deals. Spoke in front of large audiences for sales and recruiting. Led by doing — not by title.</p>
+          <span class="achievement-tag">Entrepreneurship · Leadership</span>
+        </div>
+      </div>
+
+      <div class="achievement fade-in">
+        <div class="achievement-year">Now</div>
+        <div class="achievement-content">
+          <h3>Trading Crypto & Watching What's Next</h3>
+          <p>Active in crypto markets. Continuing to study emerging tech, AI, and cultural shifts — identifying the next wave before the crowd arrives. Staying connected to the right people and the right conversations.</p>
+          <span class="achievement-tag">Crypto · Emerging Tech</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Social proof -->
+    <div class="proof-block fade-in">
+      <p>
+        Being noticed by the right people matters. <strong>Brian Roemmele</strong> — widely recognized as one of the foremost thinkers on AI and voice computing, with <strong>458K followers on X</strong> — follows me. That's not an accident. That's pattern recognition on his end, too.
+      </p>
+      <div class="proof-author">
+        <div class="proof-author-dot"></div>
+        <div>
+          <span>Brian Roemmele</span><br />
+          <small>@BrianRoemmele · 458K followers · Follows @itsonii3</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label fade-in">What I Bring</p>
+    <h2 class="section-title fade-in">Skills &<br />Capabilities</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon">📈</div>
+        <h4>Trend Identification</h4>
+        <p>Spotting what matters before the market catches on.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🎯</div>
+        <h4>Sales & Persuasion</h4>
+        <p>Direct sales, recruiting, and closing. Trained others to do the same.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🎤</div>
+        <h4>Public Speaking</h4>
+        <p>Spoken in front of large audiences in high-stakes sales environments.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🎬</div>
+        <h4>Video & Content Creation</h4>
+        <p>YouTube content creation, video editing, thumbnail design.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🖼️</div>
+        <h4>Adobe Suite</h4>
+        <p>Experienced with Adobe creative tools for editing and design.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">₿</div>
+        <h4>Crypto Trading</h4>
+        <p>Active market participant. Understands cycles, timing, and risk.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🤝</div>
+        <h4>Networking</h4>
+        <p>Building real connections with people who are ahead of the curve.</p>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">⚡</div>
+        <h4>Adaptability</h4>
+        <p>Drop me into any situation. I will figure it out and get it done.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONNECT -->
+  <section id="connect">
+    <p class="section-label fade-in">Get In Touch</p>
+    <h2 class="section-title fade-in">Let's Connect</h2>
+    <p class="connect-sub fade-in">
+      If you're building something interesting, thinking ahead of the curve, or just want to talk — reach out.
+    </p>
+    <div class="connect-links fade-in">
+      <a href="https://x.com/itsonii3" target="_blank" class="btn btn-primary">𝕏 @itsonii3</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Santiago Almazan Jr. &nbsp;·&nbsp; <a href="https://x.com/itsonii3" target="_blank">@itsonii3</a> &nbsp;·&nbsp; Built different.</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 80 * (entry.target.dataset.delay || 0));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach((el, i) => {
+      el.dataset.delay = i % 4;
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
